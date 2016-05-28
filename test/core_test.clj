@@ -4,10 +4,10 @@
 
 (deftest parse-input-tests
   (testing "it should parse hh:mm to a vector with hours and minutes"
-    (is (= {:input [12 35], :error nil} (core/parse-input "12:35"))))
+    (is (= {:time [12 35], :error nil} (core/parse-input "12:35"))))
 
   (testing "it should handle when the input is malformed"
-    (is (= {:input nil, :error "Wrong input! It should be hh:mm"} (core/parse-input "1235"))))
+    (is (= {:time nil, :error "Wrong input! It should be hh:mm"} (core/parse-input "1235"))))
 
   (testing "it should handle when the values are not valid"
     (is (= 1 1))))

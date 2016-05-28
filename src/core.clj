@@ -33,8 +33,8 @@
   "Takes user input and parses it into hours and minutes"
   [input]
   (if (not (valid-input-format input))
-    {:input nil :error "Wrong input! It should be hh:mm"}
-    {:input (get-time input) :error nil}))
+    {:time nil :error "Wrong input! It should be hh:mm"}
+    {:time (get-time input) :error nil}))
 
 (defn -main
   [& args]
