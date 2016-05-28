@@ -3,7 +3,7 @@
             [core :refer :all]))
 
 (deftest parse-input-tests
-  (testing "it should parse hh:mm to a map with hours and minutes"
+  (testing "it should parse hh:mm to a vector with hours and minutes"
     (is (= {:input [12 35], :error nil} (core/parse-input "12:35"))))
 
   (testing "it should handle when the input is malformed"
