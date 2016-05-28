@@ -3,12 +3,16 @@
     [input :only [parse-input]]
     [clock-formatter :only [format-it]]))
 
-(defn do-magic
+(def wrong-input (ref "Try typing something in this format instead hh:mm"))
+
+(defn clock-face
   [user-input]
   (if-let [the-time (parse-input user-input)]
     (format-it the-time)
-    "Oops! Wrong Input! Try typing something in this format instead hh:mm"))
+    @wrong-input))
 
 (defn -main
   [& args]
-  (println (do-magic (first args))))
+  (if (= 1 (count args))
+    (println (clock-face (first args)))
+    (println (str "Too many arguments, " @wrong-input))))
