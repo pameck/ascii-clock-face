@@ -38,8 +38,8 @@
 
 (defn -main
   [& args]
-  (println (show 
-              (.input (parse-input (first args)))
+  (println (show
+              (:time (parse-input (first args)))
             )
   )
 )
