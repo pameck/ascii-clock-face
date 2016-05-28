@@ -13,14 +13,14 @@
   (testing "it should handle when the values are not valid"
     (is (= 1 1))))
 
-(deftest input-format-valid-tests
+(deftest validate-input-format-tests
   (testing "it should return true when format is ##:##"
-    (is (= true (core/input-format-valid "12:35"))))
+    (is (= {:input "12:35", :error nil} (core/validate-input-format "12:35"))))
 
   (testing "it should return false when format not ##:##"
-    (is (= false (core/input-format-valid "1:35")))
-    (is (= false (core/input-format-valid "12:5")))
-    (is (= false (core/input-format-valid "12445")))
-    (is (= false (core/input-format-valid "125")))
-    (is (= false (core/input-format-valid "AA:45")))
-    (is (= false (core/input-format-valid "12:425")))))
+    (is (= {:input nil, :error "Wrong input! It should be hh:mm"} (core/validate-input-format "1:35")))
+    (is (= {:input nil, :error "Wrong input! It should be hh:mm"} (core/validate-input-format "12:5")))
+    (is (= {:input nil, :error "Wrong input! It should be hh:mm"} (core/validate-input-format "12445")))
+    (is (= {:input nil, :error "Wrong input! It should be hh:mm"} (core/validate-input-format "125")))
+    (is (= {:input nil, :error "Wrong input! It should be hh:mm"} (core/validate-input-format "AA:45")))
+    (is (= {:input nil, :error "Wrong input! It should be hh:mm"} (core/validate-input-format "12:425")))))
