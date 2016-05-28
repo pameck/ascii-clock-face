@@ -36,10 +36,16 @@
     {:time nil :error "Wrong input! It should be hh:mm"}
     {:time (get-time input) :error nil}))
 
+(defn do-magic
+  [input]
+
+  (let [{error :error, time-to-format :time} (parse-input input)]
+    (if (not (nil? error))
+      error
+      (if (valid-time time-to-format)
+        (clock-formatter/format-it time-to-format)
+        "Not valid"))))
+
 (defn -main
   [& args]
-  (println (show
-              (:time (parse-input (first args)))
-            )
-  )
-)
+  (println (do-magic (first args))))
