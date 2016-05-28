@@ -8,7 +8,7 @@
     (is (= 35 (second (:input (core/parse-time "12:35"))))))
 
   (testing "it should handle when the input is malformed"
-    (is (= 1 1)))
+    (is (= {:input nil, :error "Wrong input! It should be hh:mm"} (core/parse-time "1235"))))
 
   (testing "it should handle when the values are not valid"
     (is (= 1 1))))
