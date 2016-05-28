@@ -2,7 +2,7 @@
   (:require [clojure.test :refer :all]
             [core :refer :all]))
 
-(deftest input-parser
+(deftest parse-time-tests
   (testing "it should parse hh:mm to a map with hours and minutes"
     (is (= 12 (first (core/parse-time "12:35"))))
     (is (= 35 (second (core/parse-time "12:35"))))
@@ -17,17 +17,16 @@
   )
 )
 
-
-(deftest format-validator
+(deftest input-format-valid-tests
   (testing "it should return true when format is ##:##"
-    (is (= true (core/validate-input-format "12:35")))
+    (is (= true (core/input-format-valid "12:35")))
   )
 
   (testing "it should return false when format not ##:##"
-    (is (= false (core/validate-input-format "1:35")))
-    (is (= false (core/validate-input-format "12:5")))
-    (is (= false (core/validate-input-format "12445")))
-    (is (= false (core/validate-input-format "125")))
-    (is (= false (core/validate-input-format "AA:45")))
+    (is (= false (core/input-format-valid "1:35")))
+    (is (= false (core/input-format-valid "12:5")))
+    (is (= false (core/input-format-valid "12445")))
+    (is (= false (core/input-format-valid "125")))
+    (is (= false (core/input-format-valid "AA:45")))
   )
 )
