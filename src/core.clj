@@ -3,10 +3,10 @@
     [clojure.string :as str]
     [clock-formatter :refer (format-it)]))
 
-(defn valid-input-format
+(defn validate-input-format
   "Returns true if format is ##:##"
   [input]
-  (not (nil? (re-matches #"\d{2}:\d{2}" input))))
+  (re-matches #"\d{2}:\d{2}" input))
 
 (defn valid-minutes
   [input-time]
@@ -18,33 +18,33 @@
   (and (<= (first input-time) 23)
         (>= (first input-time) 0)))
 
-(defn valid-time
+(defn validate-time
   [input-time]
-  (and (valid-hours input-time)
-       (valid-minutes input-time)))
+  (if (and (valid-hours input-time)
+       (valid-minutes input-time))
+    input-time))
 
 (defn get-time
   "Takes a string with format ##:## and returns a records with hours and minutes"
   [input]
-  (map (fn [value]
-         (Integer. value)) (str/split input #":")))
+  (let [[hours minutes] (str/split input #":")]
+     (validate-time (vector (Integer. hours) (Integer. minutes)))))
 
 (defn parse-input
   "Takes the user input and parses it into hours and minutes"
   [input]
-  (if (not (valid-input-format input))
-    {:time nil :error "Wrong input! It should be hh:mm"}
-    {:time (get-time input) :error nil}))
+  (when-let [well-formatted-input (validate-input-format input)]
+    (get-time well-formatted-input)))
 
 (defn do-magic
   [input]
   (let [{error :error, the-time :time} (parse-input input)]
-    (if (not (nil? error))
+    (if (some? error)
       error
-      (if (valid-time the-time)
+      (if (validate-time the-time)
         (clock-formatter/format-it the-time)
         "Not valid"))))
 
 (defn -main
   [& args]
-  (println (do-magic (first args))))
+  (println (parse-input (first args))))

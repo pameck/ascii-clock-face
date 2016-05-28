@@ -4,10 +4,10 @@
 
 (deftest parse-input-tests
   (testing "it should parse hh:mm to a vector with hours and minutes"
-    (is (= {:time [12 35], :error nil} (core/parse-input "12:35"))))
+    (is (= [12 35] (core/parse-input "12:35"))))
 
   (testing "it should handle when the input is malformed"
-    (is (= {:time nil, :error "Wrong input! It should be hh:mm"} (core/parse-input "1235"))))
+    (is (= nil (core/parse-input "1235"))))
 
   (testing "it should handle when the values are not valid"
     (is (= 1 1))))
@@ -17,17 +17,17 @@
     (is (= 12 (first (core/get-time "12:35"))))
     (is (= 35 (second (core/get-time "12:35"))))))
 
-(deftest valid-input-format-tests
-  (testing "it should return true when format is ##:##"
-    (is (= true (core/valid-input-format "12:35"))))
+(deftest validate-input-format-tests
+  (testing "it should return the value when format is ##:##"
+    (is (= "12:35" (core/validate-input-format "12:35"))))
 
-  (testing "it should return false when format not ##:##"
-    (is (= false (core/valid-input-format "1:35")))
-    (is (= false (core/valid-input-format "12:5")))
-    (is (= false (core/valid-input-format "12445")))
-    (is (= false (core/valid-input-format "125")))
-    (is (= false (core/valid-input-format "AA:45")))
-    (is (= false (core/valid-input-format "12:425")))))
+  (testing "it should return nil when format not ##:##"
+    (is (= nil (core/validate-input-format "1:35")))
+    (is (= nil (core/validate-input-format "12:5")))
+    (is (= nil (core/validate-input-format "12445")))
+    (is (= nil (core/validate-input-format "125")))
+    (is (= nil (core/validate-input-format "AA:45")))
+    (is (= nil (core/validate-input-format "12:425")))))
 
 (deftest valid-minutes-tests
   (testing "it should return false when minutes negative"
@@ -52,3 +52,7 @@
     (is (= true (core/valid-hours [0 43])))
     (is (= true (core/valid-hours [2 20])))
     (is (= true (core/valid-hours [23 59])))))
+
+(deftest validate-time-tests
+  (testing "it should return nil if not valid"
+    (is (= nil (core/validate-time [55 59])))))
