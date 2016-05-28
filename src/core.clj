@@ -27,8 +27,7 @@
 (defn get-time
   "Takes a string with format ##:## and returns a record with hours and minutes"
   [input]
-  (let [[hours minutes] (str/split input #":")]
-     (validate-time (vector (Integer. hours) (Integer. minutes)))))
+  (validate-time (map #(Integer/parseInt %) (str/split input #":"))))
 
 (defn parse-input
   "Takes the user input and parses it into hours and minutes"
