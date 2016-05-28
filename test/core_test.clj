@@ -40,3 +40,15 @@
     (is (= true (core/valid-minutes [11 43])))
     (is (= true (core/valid-minutes [11 0])))
     (is (= true (core/valid-minutes [11 59])))))
+
+(deftest valid-hours-tests
+  (testing "it should return false when hours negative"
+    (is (= false (core/valid-hours [-2 10]))))
+
+  (testing "it should return false when hours greater than 23"
+    (is (= false (core/valid-hours [24 20]))))
+
+  (testing "it should return true when hours between 0 and 23"
+    (is (= true (core/valid-hours [0 43])))
+    (is (= true (core/valid-hours [2 20])))
+    (is (= true (core/valid-hours [23 59])))))

@@ -13,6 +13,16 @@
   (and (<= (second input-time) 59)
         (>= (second input-time) 0)))
 
+(defn valid-hours
+  [input-time]
+  (and (<= (first input-time) 23)
+        (>= (first input-time) 0)))
+
+(defn valid-time
+  [input-time]
+  (and (valid-hours input-time)
+       (valid-minutes input-time)))
+
 (defn get-time
   "Takes a string with format ##:## and returns a records with hours and minutes"
   [input]
