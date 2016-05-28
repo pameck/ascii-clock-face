@@ -1,7 +1,11 @@
 (ns core
-  (:gen-class))
+  (:require
+    [clojure.string :as str]))
+
+(defn parse-time [input]
+  (map (fn [value]
+         (Integer. value)) (str/split input #":")))
 
 (defn -main
-  "I don't do a whole lot ... yet."
   [& args]
-  (println "Hello, World!"))
+  (println (parse-time (first args))))
