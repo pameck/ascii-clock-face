@@ -2,6 +2,7 @@
   (:require
     [clojure.string :as str]))
 
-(defn display
+(defn show
   [input]
-  println (str "Hola Pipitus" input))
+  println (str "hh = " (first input) " mm = " (second input))
+)

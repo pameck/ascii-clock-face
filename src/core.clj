@@ -1,7 +1,7 @@
 (ns core
   (:require
     [clojure.string :as str]
-    [display :refer (display)]))
+    [display :refer (show)]))
 
 (defn valid-input-format
   "Returns true if format is ##:##"
@@ -23,4 +23,8 @@
 
 (defn -main
   [& args]
-  (println (display (parse-input (first args)))))
+  (println (show 
+              (.input (parse-input (first args)))
+            )
+  )
+)
