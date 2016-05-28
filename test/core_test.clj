@@ -30,7 +30,13 @@
     (is (= false (core/valid-input-format "12:425")))))
 
 (deftest valid-minutes-tests
-  (testing "it should return true when minutes are between 0 and 59"
+  (testing "it should return false when minutes negative"
+    (is (= false (core/valid-minutes [11 -1]))))
+
+  (testing "it should return false when minutes greater than 59"
+    (is (= false (core/valid-minutes [11 60]))))
+
+  (testing "it should return true when minutes between 0 and 59"
     (is (= true (core/valid-minutes [11 43])))
     (is (= true (core/valid-minutes [11 0])))
     (is (= true (core/valid-minutes [11 59])))))
