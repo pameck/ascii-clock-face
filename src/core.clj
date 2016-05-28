@@ -30,7 +30,7 @@
          (Integer. value)) (str/split input #":")))
 
 (defn parse-input
-  "Takes user input and parses it into hours and minutes"
+  "Takes the user input and parses it into hours and minutes"
   [input]
   (if (not (valid-input-format input))
     {:time nil :error "Wrong input! It should be hh:mm"}
@@ -38,12 +38,11 @@
 
 (defn do-magic
   [input]
-
-  (let [{error :error, time-to-format :time} (parse-input input)]
+  (let [{error :error, the-time :time} (parse-input input)]
     (if (not (nil? error))
       error
-      (if (valid-time time-to-format)
-        (clock-formatter/format-it time-to-format)
+      (if (valid-time the-time)
+        (clock-formatter/format-it the-time)
         "Not valid"))))
 
 (defn -main
