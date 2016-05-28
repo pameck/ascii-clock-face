@@ -2,16 +2,20 @@
   (:require [clojure.test :refer :all]
             [core :refer :all]))
 
-(deftest parse-time-tests
+(deftest parse-input-tests
   (testing "it should parse hh:mm to a map with hours and minutes"
-    (is (= 12 (first (:input (core/parse-time "12:35")))))
-    (is (= 35 (second (:input (core/parse-time "12:35"))))))
+    (is (= {:input [12 35], :error nil} (core/parse-input "12:35"))))
 
   (testing "it should handle when the input is malformed"
-    (is (= {:input nil, :error "Wrong input! It should be hh:mm"} (core/parse-time "1235"))))
+    (is (= {:input nil, :error "Wrong input! It should be hh:mm"} (core/parse-input "1235"))))
 
   (testing "it should handle when the values are not valid"
     (is (= 1 1))))
+
+(deftest get-time-tests
+  (testing "it should parse hh:mm to a map with hours and minutes"
+    (is (= 12 (first (core/get-time "12:35"))))
+    (is (= 35 (second (core/get-time "12:35"))))))
 
 (deftest valid-input-format-tests
   (testing "it should return true when format is ##:##"
