@@ -15,7 +15,13 @@
 (deftest get-time-tests
   (testing "it should parse hh:mm to a map with hours and minutes"
     (is (= 12 (first (input/get-time "12:35"))))
-    (is (= 35 (second (input/get-time "12:35"))))))
+    (is (= 35 (second (input/get-time "12:35")))))
+
+  (testing "it returns nil if hours is not valid"
+    (is (= nil (input/get-time "32:35"))))
+
+  (testing "it returns nil if minutes is not valid"
+    (is (= nil (input/get-time "12:95")))))
 
 (deftest validate-input-format-tests
   (testing "it should return the value when format is ##:##"
