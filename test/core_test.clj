@@ -10,7 +10,7 @@
     (is (= nil (core/parse-input "1235"))))
 
   (testing "it should handle when the values are not valid"
-    (is (= 1 1))))
+    (is (= nil (core/parse-input "52:35")))))
 
 (deftest get-time-tests
   (testing "it should parse hh:mm to a map with hours and minutes"

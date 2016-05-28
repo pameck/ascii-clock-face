@@ -25,7 +25,7 @@
     input-time))
 
 (defn get-time
-  "Takes a string with format ##:## and returns a records with hours and minutes"
+  "Takes a string with format ##:## and returns a record with hours and minutes"
   [input]
   (let [[hours minutes] (str/split input #":")]
      (validate-time (vector (Integer. hours) (Integer. minutes)))))
