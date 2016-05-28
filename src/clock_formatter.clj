@@ -1,4 +1,4 @@
-(ns display
+(ns clock-formatter
   (:require
     [clojure.string :as str]))
 
@@ -9,17 +9,17 @@
 
 (defn formatDbl
   [init final]
-  (str (spacer init) 0 (spacer (- final init 1)) 0 
-  )  
+  (str (spacer init) 0 (spacer (- final init 1)) 0
+  )
 )
 
 (defn formatSngl
   [init]
   (str (spacer init) 0
-  )  
+  )
 )
 
-(defn show
+(defn format-it
   [input]
   println (str "hh = " (first input) " mm = " (second input))
 )

@@ -1,7 +1,7 @@
 (ns core
   (:require
     [clojure.string :as str]
-    [display :refer (show)]))
+    [clock-formatter :refer (format-it)]))
 
 (defn valid-input-format
   "Returns true if format is ##:##"
