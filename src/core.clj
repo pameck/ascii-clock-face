@@ -38,13 +38,10 @@
 
 (defn do-magic
   [input]
-  (let [{error :error, the-time :time} (parse-input input)]
-    (if (some? error)
-      error
-      (if (validate-time the-time)
-        (clock-formatter/format-it the-time)
-        "Not valid"))))
+  (if-let [the-time (parse-input input)]
+    (clock-formatter/format-it the-time)
+    "Oops! Wrong Input! Try typing something in this format instead hh:mm"))
 
 (defn -main
   [& args]
-  (println (parse-input (first args))))
+  (println (do-magic (first args))))
