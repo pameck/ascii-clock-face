@@ -3,8 +3,7 @@
     [clojure.string :as str]))
 
 (defn input-format-valid [input]
-  (not (nil? (re-matches #"\d{2}:\d{2}" input)))
-)
+  (not (nil? (re-matches #"\d{2}:\d{2}" input))))
 
 (defn parse-time [input]
   (map (fn [value]
