@@ -28,3 +28,9 @@
     (is (= false (core/valid-input-format "125")))
     (is (= false (core/valid-input-format "AA:45")))
     (is (= false (core/valid-input-format "12:425")))))
+
+(deftest valid-minutes-tests
+  (testing "it should return true when minutes are between 0 and 59"
+    (is (= true (core/valid-minutes [11 43])))
+    (is (= true (core/valid-minutes [11 0])))
+    (is (= true (core/valid-minutes [11 59])))))

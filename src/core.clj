@@ -8,6 +8,11 @@
   [input]
   (not (nil? (re-matches #"\d{2}:\d{2}" input))))
 
+(defn valid-minutes
+  [input-time]
+  (and (<= (second input-time) 59)
+        (>= (second input-time) 0)))
+
 (defn get-time
   "Takes a string with format ##:## and returns a records with hours and minutes"
   [input]
