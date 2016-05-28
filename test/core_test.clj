@@ -16,3 +16,18 @@
     (is (= 1 1))
   )
 )
+
+
+(deftest format-validator
+  (testing "it should return true when format is ##:##"
+    (is (= true (core/validate-input-format "12:35")))
+  )
+
+  (testing "it should return false when format not ##:##"
+    (is (= false (core/validate-input-format "1:35")))
+    (is (= false (core/validate-input-format "12:5")))
+    (is (= false (core/validate-input-format "12445")))
+    (is (= false (core/validate-input-format "125")))
+    (is (= false (core/validate-input-format "AA:45")))
+  )
+)

@@ -2,6 +2,9 @@
   (:require
     [clojure.string :as str]))
 
+(defn validate-input-format [input]
+  false)
+
 (defn parse-time [input]
   (map (fn [value]
          (Integer. value)) (str/split input #":")))
