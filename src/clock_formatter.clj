@@ -22,36 +22,37 @@
   [militar-time]
   militar-time)
 
-(defn replace-element
-  [vct position newValue]
-  (assoc vct position newValue)
-)
+(defn matrix-get
+  [vector-2d row column]
+  (nth (nth vector-2d row) column))
 
-(defn set-time
-  [matrix row column label]
-  (replace-element matrix row (replace-element (nth matrix row) column label))
-)
+(defn move-hand
+  [clock row column unit]
+  (assoc clock row
+      (if (not= "o" (matrix-get clock row column))
+          (assoc (nth clock row) column "x")
+          (assoc (nth clock row) column unit))))
 
 (defn point-hand
-  [clock pointTo label]
+  [clock pointTo unit]
   (case pointTo
-      1   (set-time clock 1 4 label)
-      2   (set-time clock 2 5 label)
-      3   (set-time clock 3 6 label)
-      4   (set-time clock 4 5 label)
-      5   (set-time clock 5 4 label)
-      6   (set-time clock 6 3 label)
-      7   (set-time clock 5 2 label)
-      8   (set-time clock 4 1 label)
-      9   (set-time clock 3 0 label)
-      10  (set-time clock 2 1 label)
-      11  (set-time clock 1 2 label)
-      12  (set-time clock 0 3 label)))
+      1   (move-hand clock 1 4 unit)
+      2   (move-hand clock 2 5 unit)
+      3   (move-hand clock 3 6 unit)
+      4   (move-hand clock 4 5 unit)
+      5   (move-hand clock 5 4 unit)
+      6   (move-hand clock 6 3 unit)
+      7   (move-hand clock 5 2 unit)
+      8   (move-hand clock 4 1 unit)
+      9   (move-hand clock 3 0 unit)
+      10  (move-hand clock 2 1 unit)
+      11  (move-hand clock 1 2 unit)
+      12  (move-hand clock 0 3 unit)))
 
-(defn set-hour
+(defn point-hours-hand
   [clock hour]
   (point-hand clock hour "h"))
 
-(defn set-minutes
+(defn point-minutes-hand
   [clock minutes]
   (point-hand clock minutes "m"))
