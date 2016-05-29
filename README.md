@@ -1,15 +1,11 @@
 # ascii-clock
 
-FIXME: description
+Clojure Implementation of an analog clock face.
 
 ## Usage
-    some go script
+    lein run hh:mm
 
-    $ java -jar ascii-clock-0.1.0-standalone.jar [args]
-
-## Options
+    go script pending
 
 
-## Examples
-
-...
+FIXME
