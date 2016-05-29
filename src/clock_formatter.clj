@@ -2,10 +2,6 @@
   (:require
     [clojure.string :as str]))
 
-(defn format-it
-  [input]
-  println (str "hh = " (first input) " mm = " (second input)))
-
 (def empty-clock
   (ref (vector
     (vector " " " " " " "o" " " " " " ")
@@ -70,3 +66,9 @@
 (defn point-minutes-hand
   [clock minutes]
   (point-hand clock minutes "m"))
+
+(defn format-it
+  [input]
+  (let [[hours minutes] (to-analog-format (first input) (second input))]
+    (point-minutes-hand (point-hours-hand @empty-clock hours) minutes))
+  )
