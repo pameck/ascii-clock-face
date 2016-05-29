@@ -3,17 +3,26 @@
             [clock-formatter :refer :all]))
 
 (deftest format-it-tests
-  (testing "it should format a clock with the correct hours"
+  (testing "it should return a clock-matrix representing a clockface with the time set"
     (is (= "hh = 5 mm = 30" (clock-formatter/format-it [5 30])))))
 
 
 (deftest to-analog-format-tests
-  (testing "it should transform hours to 12 hour format"
-    (is (= [1 32]  (to-analog-format [1 32])))
-    (is (= [2 32]  (to-analog-format [2 32])))
-    (is (= [12 32] (to-analog-format [12 32])))
-    ; (is (= [1 32]  (to-analog-format [13 32])))
-    ; (is (= [2 32]  (to-analog-format [14 32])))
-    ; (is (= [10 32] (to-analog-format [22 32])))
-    ; (is (= [12 32] (to-analog-format [24 32])))
-    ))
+  (testing "it should transform hours to 1 to 12 format"
+    (is (= 1 1)))
+
+  (testing "it should round down the minutes past the hour to the nearest 5"
+    (is (= 1 1))
+
+  (testing "it should transform minutes to 1 to 12 format"
+    (is (= 1 1)))))
+
+(deftest point-hand-tests
+  (testing "it should return the clock-matrix with an h set to the corresponding hour position"
+    (is (= 1 1)))
+
+  (testing "it should return the clock-matrix with an m set in the corresponding minute position"
+    (is (= 1 1)))
+
+  (testing "it should return the clock-matrix with an x in the corresponding position when hours and minutes set to the same position"
+    (is (= 1 1))))
