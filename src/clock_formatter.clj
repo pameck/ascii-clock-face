@@ -18,9 +18,23 @@
   ))
 )
 
+(defn to-analog-hours
+  [militar-hour]
+  (if (< militar-hour 12)
+    militar-hour
+    (- militar-hour 12)
+  )
+)
+
+(defn to-analog-minutes
+  [militar-minutes]
+  (int (Math/floor (/ militar-minutes 5)))
+)
+
 (defn to-analog-format
-  [militar-time]
-  militar-time)
+   [militar-hour militar-minutes]
+   [(to-analog-hours militar-hour) (to-analog-minutes militar-minutes)]
+)
 
 (defn matrix-get
   [vector-2d row column]
