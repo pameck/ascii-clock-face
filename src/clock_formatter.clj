@@ -51,3 +51,7 @@
 (defn set-hour
   [clock hour]
   (point-hand clock hour "h"))
+
+(defn set-minutes
+  [clock minutes]
+  (point-hand clock minutes "m"))

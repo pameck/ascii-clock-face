@@ -1,6 +1,6 @@
 (ns clock-formatter-test
   (:require [clojure.test :refer :all])
-  (:use [clock-formatter :only [format-it empty-clock point-hand]]))
+  (:use [clock-formatter :only [format-it empty-clock set-minutes set-hour]]))
 
 (deftest format-it-tests
   (testing "it should return a clock-matrix representing a clockface with the time set"
@@ -16,13 +16,14 @@
   (testing "it should transform minutes to 1 to 12 format"
     (is (= 1 1)))))
 
-(deftest point-hand-tests
+(deftest set-hour-tests
   (testing "it should return the clock-matrix with an h set to the corresponding hour position"
-    (is (= [" " " " "h" " " "o" " " " "] (second (point-hand @empty-clock 11 "h"))))
-    (is (= [" " "h" " " " " " " "o" " "] (nth (point-hand @empty-clock 8 "h") 4))))
+    (is (= [" " " " "h" " " "o" " " " "] (second (set-hour @empty-clock 11))))
+    (is (= [" " "h" " " " " " " "o" " "] (nth (set-hour @empty-clock 8) 4)))))
 
+(deftest set-minutes-tests
   (testing "it should return the clock-matrix with an m set in the corresponding minute position"
-    (is (= 1 1)))
+    (is (= [" " " " " " "m" " " " " " "] (first (set-minutes @empty-clock 12)))))
 
   (testing "it should return the clock-matrix with an x in the corresponding position when hours and minutes set to the same position"
     (is (= 1 1))))
