@@ -1,4 +1,6 @@
 (ns core
+  (:require
+    [clojure.string :as str])
   (:use
     [input :only [parse-input]]
     [clock-formatter :only [format-it]]))
@@ -14,5 +16,6 @@
 (defn -main
   [& args]
   (if (= 1 (count args))
-    (println (clock-face (first args)))
+    (doseq [line (clock-face (first args))]
+      (println (str/join " " line)))
     (println (str "Too many arguments, " @wrong-input))))
