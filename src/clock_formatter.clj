@@ -60,15 +60,18 @@
       12  (move-hand clock 0 3 unit)))
 
 (defn point-hours-hand
-  [clock hour]
+  [hour clock]
   (point-hand clock hour "h"))
 
 (defn point-minutes-hand
-  [clock minutes]
+  [minutes clock]
   (point-hand clock minutes "m"))
 
 (defn format-it
   [input]
   (let [[hours minutes] (to-analog-format (first input) (second input))]
-    (point-minutes-hand (point-hours-hand @empty-clock hours) minutes))
+    (->> @empty-clock 
+      (point-hours-hand hours)
+      (point-minutes-hand minutes)
+    ))
   )
