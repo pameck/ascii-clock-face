@@ -23,6 +23,9 @@
   (case value
       1 (replaceInMatrix clock 1 4 "h")
   )
+(defn to-analog-format
+  [militar-time]
+  militar-time)
 )
 
 (defn replaceInMatrix
