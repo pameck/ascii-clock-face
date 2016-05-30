@@ -1,6 +1,11 @@
 # ascii-clock
 
-Prints a clock face given a time in the format hh:mm
+Prints a clock face given a time in the format hh:mm.
+
+- The 'h' represents the hours
+- The 'm' represents the minutes
+- The 'x' represents when the hour and the minute both fall on the same mark
+
 
 ## Installation:
 
@@ -48,6 +53,19 @@ o     h
    o
 ```
 
+```bash
+$ ./go.sh 06:30
+
+   o
+  o o
+ o   o
+o     o
+ o   o
+  o o
+   x
+```
+
 ## Collaborators:
 This is a family business:
+
 [Pam Rucinque](https://github.com/pameck) & [Andres Castano](https://github.com/afcastano)
