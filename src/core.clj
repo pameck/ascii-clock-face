@@ -5,17 +5,17 @@
     [input :only [parse-input]]
     [clock-formatter :only [format-it]]))
 
-(def wrong-input (ref "Try typing something in this format instead hh:mm"))
+(def wrong-input (ref "Try typing something in this format hh:mm, like 17:45"))
 
 (defn clock-face
   [user-input]
   (if-let [the-time (parse-input user-input)]
     (format-it the-time)
-    @wrong-input))
+    [@wrong-input]))
 
 (defn -main
   [& args]
   (if (= 1 (count args))
     (doseq [line (clock-face (first args))]
-      (println (str/join " " line)))
+      (println (str/join line)))
     (println (str "Too many arguments, " @wrong-input))))
