@@ -46,6 +46,7 @@
 (defn point-hand
   [clock pointTo unit]
   (case pointTo
+      0   (move-hand clock 0 3 unit)
       1   (move-hand clock 1 4 unit)
       2   (move-hand clock 2 5 unit)
       3   (move-hand clock 3 6 unit)
@@ -56,8 +57,7 @@
       8   (move-hand clock 4 1 unit)
       9   (move-hand clock 3 0 unit)
       10  (move-hand clock 2 1 unit)
-      11  (move-hand clock 1 2 unit)
-      12  (move-hand clock 0 3 unit)))
+      11  (move-hand clock 1 2 unit)))
 
 (defn point-hours-hand
   [hour clock]
@@ -70,7 +70,7 @@
 (defn format-it
   [input]
   (let [[hours minutes] (to-analog-format (first input) (second input))]
-    (->> @empty-clock 
+    (->> @empty-clock
       (point-hours-hand hours)
       (point-minutes-hand minutes)
     ))

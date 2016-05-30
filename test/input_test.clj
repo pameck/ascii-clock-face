@@ -28,6 +28,7 @@
     (is (= "12:35" (input/validate-input-format "12:35"))))
 
   (testing "it should return nil when format not ##:##"
+    (is (= nil (input/validate-input-format "437598359435")))
     (is (= nil (input/validate-input-format "1:35")))
     (is (= nil (input/validate-input-format "12:5")))
     (is (= nil (input/validate-input-format "12445")))
