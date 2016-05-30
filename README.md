@@ -4,7 +4,7 @@ Prints a clock face given a time in the format hh:mm
 
 ## Installation:
 
-- Requires leiningen, [Download here](http://leiningen.org/)
+- Requires leiningen, you can download it [here](http://leiningen.org/)
 
 ```bash
 $ git clone https://github.com/pameck/ascii-clock-face
@@ -47,3 +47,7 @@ o     h
   o o
    o
 ```
+
+## Collaborators:
+This is a family business:
+[Pam Rucinque](https://github.com/pameck) & [Andres Castano](https://github.com/afcastano)
